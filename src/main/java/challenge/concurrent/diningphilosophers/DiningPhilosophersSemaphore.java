@@ -58,7 +58,7 @@ public class DiningPhilosophersSemaphore {
 						DiningPhilosophersSemaphore.mutex.acquire();
 						this.state = State.HUNGRY;
 						break;
-						
+
 					case HUNGRY:
 						// aquire both forks, i.e. only eat if no neighbor is eating
 						// otherwise wait
@@ -67,7 +67,7 @@ public class DiningPhilosophersSemaphore {
 						this.selfSemaphore.acquire();
 						this.state = State.EATING;
 						break;
-						
+
 					case EATING:
 						thinkOrEat();
 						DiningPhilosophersSemaphore.mutex.acquire();
@@ -85,10 +85,8 @@ public class DiningPhilosophersSemaphore {
 		}
 
 		static private void test(Philosopher p) {
-			if (p.left().state != State.EATING 
-				&& p.state == State.HUNGRY 
-				&& p.right().state != State.EATING) {
-				
+			if (p.left().state != State.EATING && p.state == State.HUNGRY && p.right().state != State.EATING) {
+
 				p.state = State.EATING;
 				p.selfSemaphore.release();
 			}

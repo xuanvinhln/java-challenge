@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.ForkJoinPool;
 
 public class Test {
 	static boolean isUniqueChars(String str) {
@@ -43,5 +44,7 @@ public class Test {
 		
 		System.out.println(words);
 		System.out.println(words.size());
+		
+		System.out.println(ForkJoinPool.getCommonPoolParallelism());
 	}
 }
